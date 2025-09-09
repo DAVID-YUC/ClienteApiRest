@@ -1,21 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.umg.api.ui;
+import com.umg.api.model.Maestromodel;
+import com.umg.api.service.MaestroService;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author mayno
- */
 public class Profesor extends javax.swing.JPanel {
-
-    /**
-     * Creates new form Estudiante
-     */
+  private DefaultTableModel model;
+    private MaestroService service = new MaestroService();
+    private TableRowSorter<DefaultTableModel> rowSorter;
     public Profesor() {
-        initComponents();
+         initComponents();
+        
+     model = new DefaultTableModel(
+            new String[]{"ID", "Nombre", "Apellido", "Email", "Especialidad", "Telefono", "Estado", "Fecha de trabajo que inicio"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTableProfesor.setModel(model);
+        
+        rowSorter = new TableRowSorter<>(model);
+        jTableProfesor.setRowSorter(rowSorter);
+
+        loadProfesores();
     }
+
+       /* jtProfesor.setModel(model);
+
+        jtProfesor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                fillFieldsFromSelectedRow();
+            }
+        });*/
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,16 +54,18 @@ public class Profesor extends javax.swing.JPanel {
         panelRound3 = new com.umg.api.ui.PanelRound();
         btnAgregarProfesor = new javax.swing.JButton();
         panelRound4 = new com.umg.api.ui.PanelRound();
-        btnEliminarProfesor = new javax.swing.JButton();
+        btnActualizarProfesor = new javax.swing.JButton();
         panelRound5 = new com.umg.api.ui.PanelRound();
         btnEditarProfesor = new javax.swing.JButton();
         panelRound6 = new com.umg.api.ui.PanelRound();
-        btnBuscarEstudiante = new javax.swing.JButton();
-        txtBuscarEstudiante = new javax.swing.JTextField();
+        btnBuscarProfesors = new javax.swing.JButton();
+        txtBuscarProfesors = new javax.swing.JTextField();
         JTableEstudiantes = new javax.swing.JScrollPane();
-        jTableEstudiante = new javax.swing.JTable();
+        jTableProfesor = new javax.swing.JTable();
         lblTexto1 = new javax.swing.JLabel();
         lblTexto2 = new javax.swing.JLabel();
+        panelRound7 = new com.umg.api.ui.PanelRound();
+        btnEliminarProfesor1 = new javax.swing.JButton();
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(25);
@@ -92,14 +118,14 @@ public class Profesor extends javax.swing.JPanel {
         panelRound4.setRoundTopLeft(15);
         panelRound4.setRoundTopRight(15);
 
-        btnEliminarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnEliminarProfesor.setText("eliminar");
-        btnEliminarProfesor.setBorderPainted(false);
-        btnEliminarProfesor.setContentAreaFilled(false);
-        btnEliminarProfesor.setFocusPainted(false);
-        btnEliminarProfesor.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnActualizarProfesor.setText("Actualizar");
+        btnActualizarProfesor.setBorderPainted(false);
+        btnActualizarProfesor.setContentAreaFilled(false);
+        btnActualizarProfesor.setFocusPainted(false);
+        btnActualizarProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarProfesorActionPerformed(evt);
+                btnActualizarProfesorActionPerformed(evt);
             }
         });
 
@@ -109,18 +135,18 @@ public class Profesor extends javax.swing.JPanel {
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEliminarProfesor)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addComponent(btnActualizarProfesor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEliminarProfesor)
+                .addComponent(btnActualizarProfesor)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 90, -1));
+        panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 90, -1));
 
         panelRound5.setBackground(new java.awt.Color(179, 207, 229));
         panelRound5.setPreferredSize(new java.awt.Dimension(90, 35));
@@ -167,30 +193,30 @@ public class Profesor extends javax.swing.JPanel {
         panelRound6.setRoundTopRight(15);
         panelRound6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBuscarEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarEstudiante.setText("Buscar");
-        btnBuscarEstudiante.setBorderPainted(false);
-        btnBuscarEstudiante.setContentAreaFilled(false);
-        btnBuscarEstudiante.setFocusPainted(false);
-        btnBuscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarProfesors.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarProfesors.setText("Buscar");
+        btnBuscarProfesors.setBorderPainted(false);
+        btnBuscarProfesors.setContentAreaFilled(false);
+        btnBuscarProfesors.setFocusPainted(false);
+        btnBuscarProfesors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEstudianteActionPerformed(evt);
+                btnBuscarProfesorsActionPerformed(evt);
             }
         });
-        panelRound6.add(btnBuscarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        panelRound6.add(btnBuscarProfesors, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
 
-        txtBuscarEstudiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
-        txtBuscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        txtBuscarProfesors.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        txtBuscarProfesors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarEstudianteActionPerformed(evt);
+                txtBuscarProfesorsActionPerformed(evt);
             }
         });
-        panelRound6.add(txtBuscarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 820, 20));
+        panelRound6.add(txtBuscarProfesors, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 820, 20));
 
         panelRound1.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 970, 40));
 
-        jTableEstudiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(179, 207, 229)));
-        jTableEstudiante.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProfesor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(179, 207, 229)));
+        jTableProfesor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -201,7 +227,7 @@ public class Profesor extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        JTableEstudiantes.setViewportView(jTableEstudiante);
+        JTableEstudiantes.setViewportView(jTableProfesor);
 
         panelRound1.add(JTableEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 970, 220));
 
@@ -213,6 +239,43 @@ public class Profesor extends javax.swing.JPanel {
         lblTexto2.setForeground(new java.awt.Color(74, 127, 167));
         lblTexto2.setText("Administra el cuerpo del docente");
         panelRound1.add(lblTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        panelRound7.setBackground(new java.awt.Color(179, 207, 229));
+        panelRound7.setPreferredSize(new java.awt.Dimension(90, 35));
+        panelRound7.setRoundBottomLeft(15);
+        panelRound7.setRoundBottomRight(15);
+        panelRound7.setRoundTopLeft(15);
+        panelRound7.setRoundTopRight(15);
+
+        btnEliminarProfesor1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminarProfesor1.setText("eliminar");
+        btnEliminarProfesor1.setBorderPainted(false);
+        btnEliminarProfesor1.setContentAreaFilled(false);
+        btnEliminarProfesor1.setFocusPainted(false);
+        btnEliminarProfesor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProfesor1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
+        panelRound7.setLayout(panelRound7Layout);
+        panelRound7Layout.setHorizontalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEliminarProfesor1)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        panelRound7Layout.setVerticalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEliminarProfesor1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelRound1.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -230,37 +293,128 @@ public class Profesor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarEstudianteActionPerformed
+    private void btnBuscarProfesorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProfesorsActionPerformed
+       //loadProfesores();  // carga todos los profesores
+    filtrarTabla(); 
+    }//GEN-LAST:event_btnBuscarProfesorsActionPerformed
 
-    private void txtBuscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarEstudianteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarEstudianteActionPerformed
+    private void txtBuscarProfesorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarProfesorsActionPerformed
+filtrarTabla();   
+    }//GEN-LAST:event_txtBuscarProfesorsActionPerformed
 
     private void btnAgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProfesorActionPerformed
-     AgregarProfesor z1 = new AgregarProfesor();
-     z1.setVisible(true);
+AgregarProfesor z1 = new AgregarProfesor();
+    z1.setVisible(true);
+    z1.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosed(java.awt.event.WindowEvent e) {
+            loadProfesores(); // Recargar la tabla después de agregar
+        }
+    });
+     
     }//GEN-LAST:event_btnAgregarProfesorActionPerformed
 
     private void btnEditarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProfesorActionPerformed
-     EditarProfesor y1 = new EditarProfesor();
-     y1.setVisible(true);
+    int fila = jTableProfesor.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un profesor para editar");
+        return;
+    }
+
+    // Obtener el índice real de la fila (considerando el filtro)
+    int modelRow = jTableProfesor.convertRowIndexToModel(fila);
+    String profesor = (String) model.getValueAt(modelRow, 1); // Columna 1 es el nombre
+    
+    EditarProfesor y1 = new EditarProfesor(profesor); // Cambiar a usar nombre en lugar de id
+    y1.setVisible(true);
+    
+    // Agregar listener para cuando se cierre la ventana de editar
+    y1.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosed(java.awt.event.WindowEvent e) {
+            loadProfesores();
+        }
+    });
+
+
     }//GEN-LAST:event_btnEditarProfesorActionPerformed
 
-    private void btnEliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesorActionPerformed
-     EliminarProfesor x1 = new EliminarProfesor();
-     x1.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarProfesorActionPerformed
+    private void btnActualizarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProfesorActionPerformed
+loadCustomers();
+        
+    }//GEN-LAST:event_btnActualizarProfesorActionPerformed
 
+    private void btnEliminarProfesor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesor1ActionPerformed
+                                                   
+    int fila = jTableProfesor.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un profesor para eliminar");
+        return;
+    }
 
+    int modelRow = jTableProfesor.convertRowIndexToModel(fila);
+    String nombre = (String) model.getValueAt(modelRow, 1);
+    
+    EliminarProfesor eliminarFrame = new EliminarProfesor(nombre);
+    eliminarFrame.setVentanaProfesor(this); // ← Cambiado a setVentanaProfesor
+    eliminarFrame.setVisible(true);
+    }//GEN-LAST:event_btnEliminarProfesor1ActionPerformed
+  public void loadProfesores() {
+        try {
+            List<Maestromodel> list = service.getMaestros();
+            System.out.println("Profesores encontrados: " + list.size());
+
+            model.setRowCount(0); // limpiar tabla
+
+            for (Maestromodel m : list) {
+                model.addRow(new Object[]{
+                    m.getId_catedratico(),
+                    m.getNombre(),
+                    m.getApellido(),
+                    m.getEmail(),
+                    m.getEspecialidad(),
+                    m.getTelefono(),
+                    m.getEstado(),
+                    m.getFecha_nacimiento()
+                });
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar profesores: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void filtrarTabla() {
+        String filtro = txtBuscarProfesors.getText().trim();
+        if (filtro.length() == 0) {
+            rowSorter.setRowFilter(null);
+        } else {
+            rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + filtro));
+        }
+    }
+    public void loadCustomers(){
+    try{
+    model.setRowCount((0));
+    List<Maestromodel> list = service.getMaestros();
+    for (Maestromodel c : list){
+        model.addRow(new Object[]{c.getId_catedratico(), c.getNombre(), c.getApellido(), c.getEmail(), c.getEspecialidad(), c.getTelefono(), c.getEstado(), c.getFecha_ingreso()});
+    }
+    }catch (Exception ex){
+      JOptionPane.showMessageDialog(this, "Error cargando clientes:" + ex.getMessage());
+    }
+    
+}
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JTableEstudiantes;
+    private javax.swing.JButton btnActualizarProfesor;
     private javax.swing.JButton btnAgregarProfesor;
-    private javax.swing.JButton btnBuscarEstudiante;
+    private javax.swing.JButton btnBuscarProfesors;
     private javax.swing.JButton btnEditarProfesor;
-    private javax.swing.JButton btnEliminarProfesor;
-    private javax.swing.JTable jTableEstudiante;
+    private javax.swing.JButton btnEliminarProfesor1;
+    private javax.swing.JTable jTableProfesor;
     private javax.swing.JLabel lblTexto1;
     private javax.swing.JLabel lblTexto2;
     private com.umg.api.ui.PanelRound panelRound1;
@@ -268,6 +422,7 @@ public class Profesor extends javax.swing.JPanel {
     private com.umg.api.ui.PanelRound panelRound4;
     private com.umg.api.ui.PanelRound panelRound5;
     private com.umg.api.ui.PanelRound panelRound6;
-    private javax.swing.JTextField txtBuscarEstudiante;
+    private com.umg.api.ui.PanelRound panelRound7;
+    private javax.swing.JTextField txtBuscarProfesors;
     // End of variables declaration//GEN-END:variables
 }

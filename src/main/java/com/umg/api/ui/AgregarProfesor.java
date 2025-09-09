@@ -1,18 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.umg.api.ui;
 
-/**
- *
- * @author mayno
- */
+package com.umg.api.ui;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.umg.api.model.Maestromodel;
+import com.umg.api.service.MaestroService;
+import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.ZoneId;
 public class AgregarProfesor extends javax.swing.JFrame {
 private Profesor pr1;
-    /**
-     * Creates new form EditasEstudiante
-     */
+
     public AgregarProfesor() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -31,7 +30,7 @@ private Profesor pr1;
         panelRound1 = new com.umg.api.ui.PanelRound();
         btnCancelar = new javax.swing.JButton();
         panelRound3 = new com.umg.api.ui.PanelRound();
-        btnAgregarEstudiante = new javax.swing.JButton();
+        btnAgregarProfesor = new javax.swing.JButton();
         txtEmailProfesor = new javax.swing.JTextField();
         lblEmailProfesor = new javax.swing.JLabel();
         lblSemestre1 = new javax.swing.JLabel();
@@ -98,15 +97,15 @@ private Profesor pr1;
         panelRound3.setRoundTopLeft(15);
         panelRound3.setRoundTopRight(15);
 
-        btnAgregarEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAgregarEstudiante.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarEstudiante.setText("Agregar Profesor");
-        btnAgregarEstudiante.setBorderPainted(false);
-        btnAgregarEstudiante.setContentAreaFilled(false);
-        btnAgregarEstudiante.setFocusPainted(false);
-        btnAgregarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarProfesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarProfesor.setText("Agregar Profesor");
+        btnAgregarProfesor.setBorderPainted(false);
+        btnAgregarProfesor.setContentAreaFilled(false);
+        btnAgregarProfesor.setFocusPainted(false);
+        btnAgregarProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarEstudianteActionPerformed(evt);
+                btnAgregarProfesorActionPerformed(evt);
             }
         });
 
@@ -116,14 +115,14 @@ private Profesor pr1;
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarEstudiante)
+                .addComponent(btnAgregarProfesor)
                 .addContainerGap())
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarEstudiante)
+                .addComponent(btnAgregarProfesor)
                 .addContainerGap())
         );
 
@@ -165,7 +164,7 @@ private Profesor pr1;
         lblEstado1.setForeground(new java.awt.Color(10, 25, 49));
         lblEstado1.setText("Estado");
 
-        cboEstado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Retirado", "Suspendido", " " }));
+        cboEstado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "inactivo", "suspendido", " " }));
         cboEstado1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         llbTexto1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -298,16 +297,115 @@ private Profesor pr1;
         // TODO add your handling code here:
     }//GEN-LAST:event_cboCarreraActionPerformed
 
-    private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
+    private void btnAgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProfesorActionPerformed
+  try {
+        // Capturar valores de los campos
+        String nombre = txtaNombreProfesor.getText().trim();
+        String apellido = txtaApellidoProfesor.getText().trim();
+        String email = txtEmailProfesor.getText().trim();
+        String telefono = txtTelefonoProfesor.getText().trim();
+        String especialidad = (String) cboCarrera.getSelectedItem();
+        String estado = (String) cboEstado1.getSelectedItem();
+
+        // Validar campos obligatorios
+        if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos obligatorios.");
+            return;
+        }
+
+        // Validar formato de email
+        if (!email.contains("@") || !email.contains(".")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un email válido.");
+            return;
+        }
+
+        // Validar formato de teléfono
+        if (!telefono.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe contener solo números.");
+            return;
+        }
+
+        if (telefono.length() < 8) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe tener al menos 8 dígitos.");
+            return;
+        }
+
+        // Crear objeto Maestro
+        Maestromodel maestro = new Maestromodel();
+        maestro.setNombre(nombre);
+        maestro.setApellido(apellido);
+        maestro.setEmail(email);
+        maestro.setTelefono(telefono);
+        maestro.setEspecialidad(especialidad);
+        maestro.setEstado(estado);
+
+        // CORRECCIÓN: Solo un bloque if para la fecha
+        if (jDateFechaNacimiento.getDate() != null) {
+            java.util.Date fechaSeleccionada = jDateFechaNacimiento.getDate();
+            // Convertir a LocalDate
+            LocalDate localDate = fechaSeleccionada.toInstant()
+                                                 .atZone(java.time.ZoneId.systemDefault())
+                                                 .toLocalDate();
+            maestro.setFecha_nacimiento(localDate);
+        }
+
+        // Debug: mostrar lo que se va a enviar
+        System.out.println("Datos del maestro:");
+        System.out.println("Nombre: " + maestro.getNombre());
+        System.out.println("Apellido: " + maestro.getApellido());
+        System.out.println("Email: " + maestro.getEmail());
+        System.out.println("Fecha Nacimiento: " + maestro.getFecha_nacimiento());
+
+        // Guardar en la base de datos
+        MaestroService service = new MaestroService();
+        
+        // Debug adicional: ver el JSON que se enviará
+        try {
+            ObjectMapper debugMapper = new ObjectMapper();
+            debugMapper.registerModule(new JavaTimeModule());
+            String json = debugMapper.writeValueAsString(maestro);
+            System.out.println("JSON a enviar: " + json);
+        } catch (Exception e) {
+            System.out.println("Error al convertir a JSON: " + e.getMessage());
+        }
+        
+        Maestromodel resultado = service.createMaestro(maestro);
+
+        // Mensaje de éxito
+        JOptionPane.showMessageDialog(this, "Profesor agregado correctamente.");
+
+        // Actualizar tabla en panel Profesor
+        if (pr1 != null) {
+            pr1.loadProfesores();
+        }
+
+        // Limpiar campos
+        txtaNombreProfesor.setText("");
+        txtaApellidoProfesor.setText("");
+        txtEmailProfesor.setText("");
+        txtTelefonoProfesor.setText("");
+        jDateFechaNacimiento.setDate(null);
+        cboCarrera.setSelectedIndex(0);
+        cboEstado1.setSelectedIndex(0);
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, 
+            "Error al agregar profesor: " + ex.getMessage() + 
+            "\nDetalle completo: " + ex.toString());
+        ex.printStackTrace();
+    }
+  pr1 = new Profesor();
+    pr1.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_btnAgregarProfesorActionPerformed
     public void setP1(Profesor p1){
     this.pr1 = p1;
     }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    pr1 = new Profesor();
+pr1 = new Profesor();
     pr1.setVisible(true);
     this.setVisible(false);
+  
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
@@ -353,7 +451,7 @@ private Profesor pr1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarEstudiante;
+    private javax.swing.JButton btnAgregarProfesor;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboCarrera;
     private javax.swing.JComboBox<String> cboEstado1;

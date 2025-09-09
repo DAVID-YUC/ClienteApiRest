@@ -277,7 +277,13 @@ public class Notas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarProfesorActionPerformed
 
+<<<<<<< HEAD
     private void btnConsultarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarNotaActionPerformed
+=======
+    private void btnEliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesorActionPerformed
+    
+    }//GEN-LAST:event_btnEliminarProfesorActionPerformed
+>>>>>>> b89e61996f4f9869dd0fd9a0cfa01ea988a4857f
 
     }//GEN-LAST:event_btnConsultarNotaActionPerformed
 

@@ -10,12 +10,14 @@ package com.umg.api.ui;
  */
 public class AgregarNotas extends javax.swing.JFrame {
 private Notas nt1;
-    /**
-     * Creates new form AgregarCurso
-     */
+
+
     public AgregarNotas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+
+
     }
 
     /**
@@ -35,18 +37,18 @@ private Notas nt1;
         llbTexto1 = new javax.swing.JLabel();
         lblTexto2 = new javax.swing.JLabel();
         lblEstudianteId = new javax.swing.JLabel();
-        txtEstudianteId = new javax.swing.JTextField();
+        txtStudentId = new javax.swing.JTextField();
         lblCursoId = new javax.swing.JLabel();
         txtCursoId = new javax.swing.JTextField();
         lblEstudianteId1 = new javax.swing.JLabel();
         lblEstudianteId2 = new javax.swing.JLabel();
-        txtEstudianteId1 = new javax.swing.JTextField();
+        txtNota = new javax.swing.JTextField();
         lblEstudianteId3 = new javax.swing.JLabel();
-        txtEstudianteId2 = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
         lblEstudianteId4 = new javax.swing.JLabel();
-        txtEstudianteId3 = new javax.swing.JTextField();
         lblEstudianteId5 = new javax.swing.JLabel();
-        txtEstudianteId4 = new javax.swing.JTextField();
+        txtPorcentaje = new javax.swing.JTextField();
+        jDateNota = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,7 +139,7 @@ private Notas nt1;
         lblEstudianteId.setForeground(new java.awt.Color(10, 25, 49));
         lblEstudianteId.setText("Id Estudiante *");
 
-        txtEstudianteId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        txtStudentId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         lblCursoId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCursoId.setForeground(new java.awt.Color(10, 25, 49));
@@ -151,35 +153,28 @@ private Notas nt1;
 
         lblEstudianteId2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstudianteId2.setForeground(new java.awt.Color(10, 25, 49));
-        lblEstudianteId2.setText("Parcial1");
+        lblEstudianteId2.setText("Nota");
 
-        txtEstudianteId1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        txtNota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         lblEstudianteId3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstudianteId3.setForeground(new java.awt.Color(10, 25, 49));
-        lblEstudianteId3.setText("Parcial 2");
+        lblEstudianteId3.setText("Tipo");
 
-        txtEstudianteId2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        txtTipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         lblEstudianteId4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstudianteId4.setForeground(new java.awt.Color(10, 25, 49));
-        lblEstudianteId4.setText("Ex. Final");
-
-        txtEstudianteId3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
-        txtEstudianteId3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstudianteId3ActionPerformed(evt);
-            }
-        });
+        lblEstudianteId4.setText("Fecha");
 
         lblEstudianteId5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstudianteId5.setForeground(new java.awt.Color(10, 25, 49));
-        lblEstudianteId5.setText("Zona");
+        lblEstudianteId5.setText("Porcentaje");
 
-        txtEstudianteId4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
-        txtEstudianteId4.addActionListener(new java.awt.event.ActionListener() {
+        txtPorcentaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        txtPorcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstudianteId4ActionPerformed(evt);
+                txtPorcentajeActionPerformed(evt);
             }
         });
 
@@ -193,7 +188,7 @@ private Notas nt1;
                         .addGap(26, 26, 26)
                         .addComponent(lblEstudianteId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstudianteId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(lblCursoId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,7 +202,7 @@ private Notas nt1;
                             .addGroup(panelRound1Layout.createSequentialGroup()
                                 .addComponent(lblEstudianteId2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEstudianteId1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelRound1Layout.createSequentialGroup()
@@ -217,16 +212,16 @@ private Notas nt1;
                                     .addGroup(panelRound1Layout.createSequentialGroup()
                                         .addComponent(lblEstudianteId3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstudianteId2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(lblEstudianteId4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstudianteId3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDateNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)
                                         .addComponent(lblEstudianteId5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstudianteId4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                        .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,34 +243,38 @@ private Notas nt1;
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstudianteId)
-                        .addComponent(txtEstudianteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCursoId)
                         .addComponent(txtCursoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37)
                 .addComponent(lblEstudianteId1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEstudianteId2)
-                    .addComponent(txtEstudianteId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstudianteId3)
-                    .addComponent(txtEstudianteId2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEstudianteId3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstudianteId4)
-                    .addComponent(lblEstudianteId5)
-                    .addComponent(txtEstudianteId4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound1Layout.createSequentialGroup()
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEstudianteId2)
+                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstudianteId3)
+                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstudianteId4)
+                            .addComponent(lblEstudianteId5)
+                            .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38))
+                    .addGroup(panelRound1Layout.createSequentialGroup()
+                        .addComponent(jDateNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,13 +284,9 @@ private Notas nt1;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEstudianteId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstudianteId3ActionPerformed
+    private void txtPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPorcentajeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstudianteId3ActionPerformed
-
-    private void txtEstudianteId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstudianteId4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstudianteId4ActionPerformed
+    }//GEN-LAST:event_txtPorcentajeActionPerformed
 
     private void btnAgregarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNotaActionPerformed
         // TODO add your handling code here:
@@ -305,6 +300,7 @@ private Notas nt1;
     this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -350,6 +346,7 @@ private Notas nt1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarNota;
     private javax.swing.JButton btnCancelar;
+    private com.toedter.calendar.JDateChooser jDateNota;
     private javax.swing.JLabel lblCursoId;
     private javax.swing.JLabel lblEstudianteId;
     private javax.swing.JLabel lblEstudianteId1;
@@ -363,10 +360,9 @@ private Notas nt1;
     private com.umg.api.ui.PanelRound panelRound2;
     private com.umg.api.ui.PanelRound panelRound3;
     private javax.swing.JTextField txtCursoId;
-    private javax.swing.JTextField txtEstudianteId;
-    private javax.swing.JTextField txtEstudianteId1;
-    private javax.swing.JTextField txtEstudianteId2;
-    private javax.swing.JTextField txtEstudianteId3;
-    private javax.swing.JTextField txtEstudianteId4;
+    private javax.swing.JTextField txtNota;
+    private javax.swing.JTextField txtPorcentaje;
+    private javax.swing.JTextField txtStudentId;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

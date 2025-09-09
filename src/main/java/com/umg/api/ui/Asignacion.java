@@ -40,6 +40,8 @@ public class Asignacion extends javax.swing.JPanel {
         lblTexto1 = new javax.swing.JLabel();
         JTableAsignaciones = new javax.swing.JScrollPane();
         jTableEstudiante = new javax.swing.JTable();
+        panelRound7 = new com.umg.api.ui.PanelRound();
+        btnConsultarAsignacion = new javax.swing.JButton();
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(25);
@@ -214,6 +216,43 @@ public class Asignacion extends javax.swing.JPanel {
 
         panelRound1.add(JTableAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 970, 220));
 
+        panelRound7.setBackground(new java.awt.Color(179, 207, 229));
+        panelRound7.setPreferredSize(new java.awt.Dimension(90, 35));
+        panelRound7.setRoundBottomLeft(15);
+        panelRound7.setRoundBottomRight(15);
+        panelRound7.setRoundTopLeft(15);
+        panelRound7.setRoundTopRight(15);
+
+        btnConsultarAsignacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultarAsignacion.setText("Consultar");
+        btnConsultarAsignacion.setBorderPainted(false);
+        btnConsultarAsignacion.setContentAreaFilled(false);
+        btnConsultarAsignacion.setFocusPainted(false);
+        btnConsultarAsignacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarAsignacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
+        panelRound7.setLayout(panelRound7Layout);
+        panelRound7Layout.setHorizontalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarAsignacion)
+                .addContainerGap())
+        );
+        panelRound7Layout.setVerticalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarAsignacion)
+                .addContainerGap())
+        );
+
+        panelRound1.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,11 +292,16 @@ public class Asignacion extends javax.swing.JPanel {
         f1.setVisible(true);
     }//GEN-LAST:event_btnEliminarAsignacionActionPerformed
 
+    private void btnConsultarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAsignacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarAsignacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JTableAsignaciones;
     private javax.swing.JButton btnAgregarAsignacion;
     private javax.swing.JButton btnBuscarAsignacion;
+    private javax.swing.JButton btnConsultarAsignacion;
     private javax.swing.JButton btnEditarAsignacion;
     private javax.swing.JButton btnEliminarAsignacion;
     private javax.swing.JTable jTableEstudiante;
@@ -268,6 +312,7 @@ public class Asignacion extends javax.swing.JPanel {
     private com.umg.api.ui.PanelRound panelRound4;
     private com.umg.api.ui.PanelRound panelRound5;
     private com.umg.api.ui.PanelRound panelRound6;
+    private com.umg.api.ui.PanelRound panelRound7;
     private javax.swing.JTextField txtBuscarAsignacion;
     // End of variables declaration//GEN-END:variables
 }

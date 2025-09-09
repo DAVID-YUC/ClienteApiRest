@@ -40,6 +40,8 @@ public class Estudiante extends javax.swing.JPanel {
         txtBuscarEstudiante = new javax.swing.JTextField();
         JTableEstudiantes = new javax.swing.JScrollPane();
         jTableEstudiante = new javax.swing.JTable();
+        panelRound7 = new com.umg.api.ui.PanelRound();
+        btnConsultarEstudiante = new javax.swing.JButton();
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(25);
@@ -214,6 +216,43 @@ public class Estudiante extends javax.swing.JPanel {
 
         panelRound1.add(JTableEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 970, 220));
 
+        panelRound7.setBackground(new java.awt.Color(179, 207, 229));
+        panelRound7.setPreferredSize(new java.awt.Dimension(90, 35));
+        panelRound7.setRoundBottomLeft(15);
+        panelRound7.setRoundBottomRight(15);
+        panelRound7.setRoundTopLeft(15);
+        panelRound7.setRoundTopRight(15);
+
+        btnConsultarEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultarEstudiante.setText("Consultar");
+        btnConsultarEstudiante.setBorderPainted(false);
+        btnConsultarEstudiante.setContentAreaFilled(false);
+        btnConsultarEstudiante.setFocusPainted(false);
+        btnConsultarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarEstudianteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
+        panelRound7.setLayout(panelRound7Layout);
+        panelRound7Layout.setHorizontalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarEstudiante)
+                .addContainerGap())
+        );
+        panelRound7Layout.setVerticalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarEstudiante)
+                .addContainerGap())
+        );
+
+        panelRound1.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,11 +292,16 @@ public class Estudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarEstudianteActionPerformed
 
+    private void btnConsultarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEstudianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarEstudianteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JTableEstudiantes;
     private javax.swing.JButton btnAgregarEstudiante;
     private javax.swing.JButton btnBuscarEstudiante;
+    private javax.swing.JButton btnConsultarEstudiante;
     private javax.swing.JButton btnEditarEstudiante;
     private javax.swing.JButton btnEliminarEstudiante;
     private javax.swing.JTable jTableEstudiante;
@@ -268,6 +312,7 @@ public class Estudiante extends javax.swing.JPanel {
     private com.umg.api.ui.PanelRound panelRound4;
     private com.umg.api.ui.PanelRound panelRound5;
     private com.umg.api.ui.PanelRound panelRound6;
+    private com.umg.api.ui.PanelRound panelRound7;
     private javax.swing.JTextField txtBuscarEstudiante;
     // End of variables declaration//GEN-END:variables
 }

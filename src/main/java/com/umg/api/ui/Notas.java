@@ -239,8 +239,7 @@ public class Notas extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarProfesorActionPerformed
 
     private void btnEliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesorActionPerformed
-     EliminarProfesor x1 = new EliminarProfesor();
-     x1.setVisible(true);
+    
     }//GEN-LAST:event_btnEliminarProfesorActionPerformed
 
     private void btnEditarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProfesorActionPerformed

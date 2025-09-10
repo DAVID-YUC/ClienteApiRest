@@ -4,15 +4,15 @@
  */
 package com.umg.api.ui;
 
+
+
 /**
  *
  * @author mayno
  */
 public class Notas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Estudiante
-     */
+
     public Notas() {
         initComponents();
     }
@@ -28,18 +28,20 @@ public class Notas extends javax.swing.JPanel {
 
         panelRound1 = new com.umg.api.ui.PanelRound();
         panelRound3 = new com.umg.api.ui.PanelRound();
-        btnAgregarProfesor = new javax.swing.JButton();
+        btnAgregarNota = new javax.swing.JButton();
         panelRound4 = new com.umg.api.ui.PanelRound();
-        btnEliminarProfesor = new javax.swing.JButton();
+        btnConsultarNota = new javax.swing.JButton();
         panelRound5 = new com.umg.api.ui.PanelRound();
-        btnEditarProfesor = new javax.swing.JButton();
+        btnEditarNota = new javax.swing.JButton();
         panelRound6 = new com.umg.api.ui.PanelRound();
         btnBuscarProfesor = new javax.swing.JButton();
         txtBuscarProfesor = new javax.swing.JTextField();
         lblTexto1 = new javax.swing.JLabel();
         lblTexto2 = new javax.swing.JLabel();
         jTableProfesores = new javax.swing.JScrollPane();
-        jTableEstudiante = new javax.swing.JTable();
+        jTableNotas = new javax.swing.JTable();
+        panelRound7 = new com.umg.api.ui.PanelRound();
+        btnEliminarNota = new javax.swing.JButton();
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(25);
@@ -55,14 +57,14 @@ public class Notas extends javax.swing.JPanel {
         panelRound3.setRoundTopLeft(15);
         panelRound3.setRoundTopRight(15);
 
-        btnAgregarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAgregarProfesor.setText("agregar");
-        btnAgregarProfesor.setBorderPainted(false);
-        btnAgregarProfesor.setContentAreaFilled(false);
-        btnAgregarProfesor.setFocusPainted(false);
-        btnAgregarProfesor.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarNota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarNota.setText("agregar");
+        btnAgregarNota.setBorderPainted(false);
+        btnAgregarNota.setContentAreaFilled(false);
+        btnAgregarNota.setFocusPainted(false);
+        btnAgregarNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProfesorActionPerformed(evt);
+                btnAgregarNotaActionPerformed(evt);
             }
         });
 
@@ -72,14 +74,14 @@ public class Notas extends javax.swing.JPanel {
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAgregarProfesor)
+                .addComponent(btnAgregarNota)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarProfesor)
+                .addComponent(btnAgregarNota)
                 .addContainerGap())
         );
 
@@ -92,14 +94,14 @@ public class Notas extends javax.swing.JPanel {
         panelRound4.setRoundTopLeft(15);
         panelRound4.setRoundTopRight(15);
 
-        btnEliminarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnEliminarProfesor.setText("eliminar");
-        btnEliminarProfesor.setBorderPainted(false);
-        btnEliminarProfesor.setContentAreaFilled(false);
-        btnEliminarProfesor.setFocusPainted(false);
-        btnEliminarProfesor.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarNota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultarNota.setText("Consultar");
+        btnConsultarNota.setBorderPainted(false);
+        btnConsultarNota.setContentAreaFilled(false);
+        btnConsultarNota.setFocusPainted(false);
+        btnConsultarNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarProfesorActionPerformed(evt);
+                btnConsultarNotaActionPerformed(evt);
             }
         });
 
@@ -108,19 +110,19 @@ public class Notas extends javax.swing.JPanel {
         panelRound4Layout.setHorizontalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(btnEliminarProfesor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarNota)
                 .addContainerGap())
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminarProfesor)
+                .addComponent(btnConsultarNota)
                 .addContainerGap())
         );
 
-        panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 90, -1));
+        panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 90, -1));
 
         panelRound5.setBackground(new java.awt.Color(179, 207, 229));
         panelRound5.setPreferredSize(new java.awt.Dimension(90, 35));
@@ -129,14 +131,14 @@ public class Notas extends javax.swing.JPanel {
         panelRound5.setRoundTopLeft(15);
         panelRound5.setRoundTopRight(15);
 
-        btnEditarProfesor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnEditarProfesor.setText("Editar");
-        btnEditarProfesor.setBorderPainted(false);
-        btnEditarProfesor.setContentAreaFilled(false);
-        btnEditarProfesor.setFocusPainted(false);
-        btnEditarProfesor.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarNota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEditarNota.setText("Editar");
+        btnEditarNota.setBorderPainted(false);
+        btnEditarNota.setContentAreaFilled(false);
+        btnEditarNota.setFocusPainted(false);
+        btnEditarNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarProfesorActionPerformed(evt);
+                btnEditarNotaActionPerformed(evt);
             }
         });
 
@@ -146,14 +148,14 @@ public class Notas extends javax.swing.JPanel {
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEditarProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(btnEditarNota, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelRound5Layout.setVerticalGroup(
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEditarProfesor)
+                .addComponent(btnEditarNota)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -198,8 +200,8 @@ public class Notas extends javax.swing.JPanel {
         lblTexto2.setText("Administra las calificaciones del estudiante. ");
         panelRound1.add(lblTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        jTableEstudiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 165)));
-        jTableEstudiante.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNotas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 165)));
+        jTableNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -210,9 +212,46 @@ public class Notas extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTableProfesores.setViewportView(jTableEstudiante);
+        jTableProfesores.setViewportView(jTableNotas);
 
         panelRound1.add(jTableProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 970, 220));
+
+        panelRound7.setBackground(new java.awt.Color(179, 207, 229));
+        panelRound7.setPreferredSize(new java.awt.Dimension(90, 35));
+        panelRound7.setRoundBottomLeft(15);
+        panelRound7.setRoundBottomRight(15);
+        panelRound7.setRoundTopLeft(15);
+        panelRound7.setRoundTopRight(15);
+
+        btnEliminarNota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminarNota.setText("eliminar");
+        btnEliminarNota.setBorderPainted(false);
+        btnEliminarNota.setContentAreaFilled(false);
+        btnEliminarNota.setFocusPainted(false);
+        btnEliminarNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarNotaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
+        panelRound7.setLayout(panelRound7Layout);
+        panelRound7Layout.setHorizontalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(btnEliminarNota)
+                .addContainerGap())
+        );
+        panelRound7Layout.setVerticalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminarNota)
+                .addContainerGap())
+        );
+
+        panelRound1.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -238,27 +277,37 @@ public class Notas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarProfesorActionPerformed
 
+<<<<<<< HEAD
+    private void btnConsultarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarNotaActionPerformed
+=======
     private void btnEliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesorActionPerformed
     
     }//GEN-LAST:event_btnEliminarProfesorActionPerformed
+>>>>>>> b89e61996f4f9869dd0fd9a0cfa01ea988a4857f
 
-    private void btnEditarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProfesorActionPerformed
+    }//GEN-LAST:event_btnConsultarNotaActionPerformed
+
+    private void btnEditarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarNotaActionPerformed
      EditarNotas y1 = new EditarNotas();
      y1.setVisible(true);
-    }//GEN-LAST:event_btnEditarProfesorActionPerformed
+    }//GEN-LAST:event_btnEditarNotaActionPerformed
 
-    private void btnAgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProfesorActionPerformed
+    private void btnAgregarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNotaActionPerformed
      AgregarNotas nt1 = new AgregarNotas();
      nt1.setVisible(true);
-    }//GEN-LAST:event_btnAgregarProfesorActionPerformed
+    }//GEN-LAST:event_btnAgregarNotaActionPerformed
 
+    private void btnEliminarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarNotaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarProfesor;
+    private javax.swing.JButton btnAgregarNota;
     private javax.swing.JButton btnBuscarProfesor;
-    private javax.swing.JButton btnEditarProfesor;
-    private javax.swing.JButton btnEliminarProfesor;
-    private javax.swing.JTable jTableEstudiante;
+    private javax.swing.JButton btnConsultarNota;
+    private javax.swing.JButton btnEditarNota;
+    private javax.swing.JButton btnEliminarNota;
+    private javax.swing.JTable jTableNotas;
     private javax.swing.JScrollPane jTableProfesores;
     private javax.swing.JLabel lblTexto1;
     private javax.swing.JLabel lblTexto2;
@@ -267,6 +316,8 @@ public class Notas extends javax.swing.JPanel {
     private com.umg.api.ui.PanelRound panelRound4;
     private com.umg.api.ui.PanelRound panelRound5;
     private com.umg.api.ui.PanelRound panelRound6;
+    private com.umg.api.ui.PanelRound panelRound7;
     private javax.swing.JTextField txtBuscarProfesor;
     // End of variables declaration//GEN-END:variables
+
 }

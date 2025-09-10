@@ -90,8 +90,6 @@ public class Principal extends javax.swing.JFrame {
         panelRound10 = new com.umg.api.ui.PanelRound();
         btnNotasVista = new javax.swing.JButton();
         content = new com.umg.api.ui.PanelRound();
-        panelRound11 = new com.umg.api.ui.PanelRound();
-        btnProfesoresVista1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -370,38 +368,6 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 404, Short.MAX_VALUE)
         );
 
-        panelRound11.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound11.setRoundBottomLeft(25);
-        panelRound11.setRoundBottomRight(25);
-        panelRound11.setRoundTopLeft(25);
-        panelRound11.setRoundTopRight(25);
-
-        btnProfesoresVista1.setForeground(new java.awt.Color(74, 127, 167));
-        btnProfesoresVista1.setText("Profesores");
-        btnProfesoresVista1.setBorderPainted(false);
-        btnProfesoresVista1.setContentAreaFilled(false);
-        btnProfesoresVista1.setFocusPainted(false);
-        btnProfesoresVista1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfesoresVista1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
-        panelRound11.setLayout(panelRound11Layout);
-        panelRound11Layout.setHorizontalGroup(
-            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound11Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(btnProfesoresVista1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelRound11Layout.setVerticalGroup(
-            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound11Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnProfesoresVista1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
@@ -427,11 +393,6 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(lblTexto1))
                             .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelRound1Layout.createSequentialGroup()
-                    .addGap(447, 447, 447)
-                    .addComponent(panelRound11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(447, Short.MAX_VALUE)))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,25 +404,16 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTexto2))
                     .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelRound1Layout.createSequentialGroup()
-                    .addGap(336, 336, 336)
-                    .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(336, 336, 336)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -533,10 +485,6 @@ public class Principal extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_btnNotasVistaActionPerformed
 
-    private void btnProfesoresVista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfesoresVista1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProfesoresVista1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -578,7 +526,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnEstudiantesVista;
     private javax.swing.JButton btnNotasVista;
     private javax.swing.JButton btnProfesoresVista;
-    private javax.swing.JButton btnProfesoresVista1;
     private com.umg.api.ui.PanelRound content;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -594,7 +541,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTexto2;
     private com.umg.api.ui.PanelRound panelRound1;
     private com.umg.api.ui.PanelRound panelRound10;
-    private com.umg.api.ui.PanelRound panelRound11;
     private com.umg.api.ui.PanelRound panelRound2;
     private com.umg.api.ui.PanelRound panelRound3;
     private com.umg.api.ui.PanelRound panelRound4;

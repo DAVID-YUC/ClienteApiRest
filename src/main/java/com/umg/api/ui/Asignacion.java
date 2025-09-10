@@ -13,13 +13,15 @@ import javax.swing.table.TableRowSorter;
 
 
 public class Asignacion extends javax.swing.JPanel {
-  private DefaultTableModel model;
+  /*private DefaultTableModel model;
     private AsignacionService service = new AsignacionService();
-    private TableRowSorter<DefaultTableModel> rowSorter;
+    private TableRowSorter<DefaultTableModel> rowSorter;*/
 
 
     public Asignacion() {
-        model = new DefaultTableModel(
+        initComponents();
+    }
+       /* model = new DefaultTableModel(
             new String[]{"studentID", "courseID", "fechaInscripcion", "estado"}, 0
         ) {
             @Override
@@ -28,7 +30,7 @@ public class Asignacion extends javax.swing.JPanel {
             }
         };
 
-    }
+    }*/
     
 
     /**
@@ -310,7 +312,7 @@ public class Asignacion extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultarAsignacionActionPerformed
     
-    public void loadAsignaciones() {
+   /* public void loadAsignaciones() {
         try {
             List<Asignacionmodel> list = service.getAsignacionmodels();
             System.out.println("Profesores encontrados: " + list.size());
@@ -352,7 +354,7 @@ public class Asignacion extends javax.swing.JPanel {
       JOptionPane.showMessageDialog(this, "Error cargando clientes:" + ex.getMessage());
     }
     
-}
+}*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JTableAsignaciones;

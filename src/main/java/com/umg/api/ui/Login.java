@@ -4,6 +4,9 @@
  */
 package com.umg.api.ui;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 
 
 /**
@@ -18,7 +21,25 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
                 this.setLocationRelativeTo(null);
-        
+ ImageIcon portada = new ImageIcon(getClass().getResource("/img/portada.png"));        
+Image imagenEscalada = portada.getImage().getScaledInstance(
+ lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+lblLogo.setIcon(new ImageIcon(imagenEscalada));
+
+ImageIcon usuario = new ImageIcon(getClass().getResource("/img/perfil.png"));
+Image imagenEscalada1 = usuario.getImage().getScaledInstance(
+    lblUsuarioIcono.getWidth(), lblUsuarioIcono.getHeight(), Image.SCALE_SMOOTH);
+lblUsuarioIcono.setIcon(new ImageIcon(imagenEscalada1));
+
+ImageIcon contrasenia = new ImageIcon(getClass().getResource("/img/candado.png"));
+Image imagenEscalada2 = contrasenia.getImage().getScaledInstance(
+    lblUsuarioContrasenia.getWidth(), lblUsuarioContrasenia.getHeight(), Image.SCALE_SMOOTH);
+lblUsuarioContrasenia.setIcon(new ImageIcon(imagenEscalada2));
+
+ImageIcon cerrar = new ImageIcon(getClass().getResource("/img/cerrar.png"));
+Image imagenEscalada3 = cerrar.getImage().getScaledInstance(
+    btnCerrar.getWidth(), btnCerrar.getHeight(), Image.SCALE_SMOOTH);
+btnCerrar.setIcon(new ImageIcon(imagenEscalada3));
 
     }
 
@@ -132,6 +153,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         lblUsuarioIcono.setBackground(new java.awt.Color(255, 255, 255));
+        lblUsuarioIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/perfil.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
         panelRound3.setLayout(panelRound3Layout);
@@ -150,7 +172,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtUsuario)
-                    .addComponent(lblUsuarioIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(lblUsuarioIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
         );
 
@@ -161,6 +183,7 @@ public class Login extends javax.swing.JFrame {
         txtContraseña.setBorder(null);
 
         lblUsuarioContrasenia.setBackground(new java.awt.Color(255, 255, 255));
+        lblUsuarioContrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/candado.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
         panelRound5.setLayout(panelRound5Layout);
@@ -177,10 +200,10 @@ public class Login extends javax.swing.JFrame {
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblUsuarioContrasenia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsuarioContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
@@ -224,7 +247,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblContrasenia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(41, 41, 41)
                 .addComponent(btnIngresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnContraseniaOlvidada)
@@ -276,7 +299,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblTexto)
                 .addGap(18, 18, 18)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,7 +317,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-
+    Principal vp1 = new Principal();
+     vp1.setVisible(true);
+     this.setVisible(false);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnContraseniaOlvidadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseniaOlvidadaActionPerformed

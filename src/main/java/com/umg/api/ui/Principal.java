@@ -13,15 +13,14 @@ import javax.swing.ImageIcon;
  * @author mayno
  */
 public class Principal extends javax.swing.JFrame {
-
+private Login v1;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        
+                
         Estudiante p1 = new Estudiante();
         p1.setSize(1015, 404);
         p1.setLocation(0, 0);
@@ -31,11 +30,11 @@ public class Principal extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
         
-         ImageIcon portada = new ImageIcon(getClass().getResource("/img/portada.png"));
-    Image imagenEscalada = portada.getImage().getScaledInstance(
-    lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
-    lblLogo.setIcon(new ImageIcon(imagenEscalada));
-    
+ ImageIcon portada = new ImageIcon(getClass().getResource("/img/portada.png"));        
+Image imagenEscalada = portada.getImage().getScaledInstance(
+ lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+lblLogo.setIcon(new ImageIcon(imagenEscalada));
+
     ImageIcon estudiantes = new ImageIcon(getClass().getResource("/img/estudiantes.png"));
     Image imagenEstudiantes = estudiantes.getImage().getScaledInstance(
     lblEstudiantesIcono.getWidth(), lblEstudiantesIcono.getHeight(), Image.SCALE_SMOOTH);
@@ -90,11 +89,14 @@ public class Principal extends javax.swing.JFrame {
         panelRound10 = new com.umg.api.ui.PanelRound();
         btnNotasVista = new javax.swing.JButton();
         content = new com.umg.api.ui.PanelRound();
+        panelRound13 = new com.umg.api.ui.PanelRound();
+        btnCerrarSesion1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelRound1.setBackground(new java.awt.Color(214, 230, 242));
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/portada.png"))); // NOI18N
         lblLogo.setText("jLabel1");
 
         lblTexto1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -118,7 +120,9 @@ public class Principal extends javax.swing.JFrame {
         lblEstudiantesIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/estudiantes.png"))); // NOI18N
         panelRound2.add(lblEstudiantesIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 30, 30));
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(74, 127, 167));
+        jLabel3.setText("30");
         panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 70, 40));
 
         panelRound3.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,7 +139,9 @@ public class Principal extends javax.swing.JFrame {
         lblProfesorIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/profesor.png"))); // NOI18N
         panelRound3.add(lblProfesorIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 30, 30));
 
-        jLabel4.setText("jLabel3");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(74, 127, 167));
+        jLabel4.setText("5");
         panelRound3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 70, 40));
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,7 +158,9 @@ public class Principal extends javax.swing.JFrame {
         lblCursos.setText("Cursos");
         panelRound4.add(lblCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        jLabel5.setText("jLabel3");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(74, 127, 167));
+        jLabel5.setText("5");
         panelRound4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 70, 40));
 
         panelRound5.setBackground(new java.awt.Color(179, 207, 229));
@@ -368,6 +376,42 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 404, Short.MAX_VALUE)
         );
 
+        panelRound13.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound13.setRoundBottomLeft(25);
+        panelRound13.setRoundBottomRight(25);
+        panelRound13.setRoundTopLeft(25);
+        panelRound13.setRoundTopRight(25);
+
+        btnCerrarSesion1.setForeground(new java.awt.Color(74, 127, 167));
+        btnCerrarSesion1.setText("Cerrar Sesión");
+        btnCerrarSesion1.setBorder(null);
+        btnCerrarSesion1.setBorderPainted(false);
+        btnCerrarSesion1.setContentAreaFilled(false);
+        btnCerrarSesion1.setFocusCycleRoot(true);
+        btnCerrarSesion1.setFocusPainted(false);
+        btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesion1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound13Layout = new javax.swing.GroupLayout(panelRound13);
+        panelRound13.setLayout(panelRound13Layout);
+        panelRound13Layout.setHorizontalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound13Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion1)
+                .addGap(20, 20, 20))
+        );
+        panelRound13Layout.setVerticalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound13Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion1)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
@@ -383,27 +427,33 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(68, 68, 68)
                             .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelRound1Layout.createSequentialGroup()
                                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblTexto2))
                             .addGroup(panelRound1Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
-                                .addComponent(lblTexto1))
+                                .addComponent(lblTexto1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panelRound13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(lblTexto1)
+                        .addGap(30, 30, 30)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRound1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTexto1)
+                            .addComponent(panelRound13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTexto2))
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTexto2)))
                 .addGap(20, 20, 20)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,12 +514,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCursosVistaActionPerformed
 
     private void btnAsignacionesVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignacionesVistaActionPerformed
-        Asignacion p4 = new Asignacion();
-        p4.setSize(1015, 404);
-        p4.setLocation(0, 0);
+        Asignacion p8 = new Asignacion();
+        p8.setSize(1015, 404);
+        p8.setLocation(0, 0);
         content.removeAll();
         content.setLayout(new BorderLayout());
-        content.add(p4, BorderLayout.CENTER);
+        content.add(p8, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnAsignacionesVistaActionPerformed
@@ -484,6 +534,14 @@ public class Principal extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnNotasVistaActionPerformed
+    public void setP1(Login v1){
+    this.v1 = v1;
+    }
+    private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
+        v1 = new Login();
+        v1.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -522,6 +580,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignacionesVista;
+    private javax.swing.JButton btnCerrarSesion1;
     private javax.swing.JButton btnCursosVista;
     private javax.swing.JButton btnEstudiantesVista;
     private javax.swing.JButton btnNotasVista;
@@ -541,6 +600,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTexto2;
     private com.umg.api.ui.PanelRound panelRound1;
     private com.umg.api.ui.PanelRound panelRound10;
+    private com.umg.api.ui.PanelRound panelRound13;
     private com.umg.api.ui.PanelRound panelRound2;
     private com.umg.api.ui.PanelRound panelRound3;
     private com.umg.api.ui.PanelRound panelRound4;

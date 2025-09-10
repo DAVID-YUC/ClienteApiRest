@@ -26,7 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class AsignacionService {
-    private static final String BASE_URL = "https://proyecto-1-4omi.onrender.com/api/catedraticos";
+    private static final String BASE_URL = "https://proyecto-1-4omi.onrender.com/api/asignacion";
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {

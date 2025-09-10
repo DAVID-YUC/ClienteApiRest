@@ -3,19 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.umg.api.ui;
+import com.umg.api.model.Asignacionmodel;
+import com.umg.api.service.AsignacionService;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author mayno
- */
+
 public class Asignacion extends javax.swing.JPanel {
+  /*private DefaultTableModel model;
+    private AsignacionService service = new AsignacionService();
+    private TableRowSorter<DefaultTableModel> rowSorter;*/
 
-    /**
-     * Creates new form Estudiante
-     */
+
     public Asignacion() {
         initComponents();
     }
+       /* model = new DefaultTableModel(
+            new String[]{"studentID", "courseID", "fechaInscripcion", "estado"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+    }*/
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -295,7 +311,50 @@ public class Asignacion extends javax.swing.JPanel {
     private void btnConsultarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultarAsignacionActionPerformed
+    
+   /* public void loadAsignaciones() {
+        try {
+            List<Asignacionmodel> list = service.getAsignacionmodels();
+            System.out.println("Profesores encontrados: " + list.size());
 
+            model.setRowCount(0); // limpiar tabla
+
+            for (Asignacionmodel m : list) {
+                model.addRow(new Object[]{
+                    m.getStudentID(),
+                    m.getCourseID(),
+                    m.getFechaInscripcion(),
+                    m.getEstado(),
+                });
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar profesores: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void filtrarTabla() {
+        String filtro = txtBuscarAsignacion.getText().trim();
+        if (filtro.length() == 0) {
+            rowSorter.setRowFilter(null);
+        } else {
+            rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + filtro));
+        }
+    }
+    
+    public void loadCustomers(){
+    try{
+    model.setRowCount((0));
+    List<Asignacionmodel> list = service.getAsignacionmodels();
+    for (Asignacionmodel c : list){
+        model.addRow(new Object[]{c.getStudentID(), c.getCourseID(), c.getFechaInscripcion(), c.getEstado()});
+    }
+    }catch (Exception ex){
+      JOptionPane.showMessageDialog(this, "Error cargando clientes:" + ex.getMessage());
+    }
+    
+}*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JTableAsignaciones;

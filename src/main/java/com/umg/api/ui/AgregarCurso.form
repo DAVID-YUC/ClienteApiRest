@@ -61,14 +61,12 @@
                           <Component id="lblCodigoCurso" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCurso" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblIdProfesor" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="txtDescripcion" alignment="0" max="32767" attributes="0"/>
                           <Component id="cboCreditos" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSemestre" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCreditos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cboSemestre" alignment="0" max="32767" attributes="0"/>
                           <Component id="cboEstado" alignment="0" pref="320" max="32767" attributes="0"/>
-                          <Component id="lblDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtIdProfesor" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtaCodigoCurso" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtCurso" alignment="0" max="32767" attributes="0"/>
@@ -111,21 +109,17 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="cboCreditos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="txtDescripcion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Component id="cboEstado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="panelRound3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="panelRound2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -291,31 +285,6 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblDescripcion">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="31" green="19" red="a" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Descripcion"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDescripcion">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder>
-                  <Color PropertyName="color" blue="a7" green="7f" red="4a" type="rgb"/>
-                </LineBorder>
-              </Border>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescripcionActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblEstado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -330,10 +299,9 @@
         <Component class="javax.swing.JComboBox" name="cboEstado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Activo"/>
-                <StringItem index="1" value="Desabilitado"/>
-                <StringItem index="2" value=" "/>
+              <StringArray count="2">
+                <StringItem index="0" value="activo"/>
+                <StringItem index="1" value="inactivo"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

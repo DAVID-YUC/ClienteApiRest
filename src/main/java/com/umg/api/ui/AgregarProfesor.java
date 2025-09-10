@@ -1,18 +1,16 @@
-
 package com.umg.api.ui;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.umg.api.model.Maestromodel;
 import com.umg.api.service.MaestroService;
-import java.awt.event.ActionEvent;
-import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import javax.swing.JOptionPane;
 public class AgregarProfesor extends javax.swing.JFrame {
 private Profesor pr1;
+// Variables declaration
 
-    public AgregarProfesor() {
+public AgregarProfesor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -46,7 +44,7 @@ private Profesor pr1;
         lblApellidoProfesor = new javax.swing.JLabel();
         txtaApellidoProfesor = new javax.swing.JTextField();
         lblFechaNacimientoProfesor = new javax.swing.JLabel();
-        jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        jDateFechaIngresos = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,8 +188,8 @@ private Profesor pr1;
         lblFechaNacimientoProfesor.setForeground(new java.awt.Color(10, 25, 49));
         lblFechaNacimientoProfesor.setText("Fecha de nacimiento");
 
-        jDateFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        jDateFechaNacimiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
+        jDateFechaIngresos.setBackground(new java.awt.Color(255, 255, 255));
+        jDateFechaIngresos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
@@ -221,7 +219,7 @@ private Profesor pr1;
                                 .addGroup(panelRound2Layout.createSequentialGroup()
                                     .addComponent(lblFechaNacimientoProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(32, 32, 32)
-                                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jDateFechaIngresos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGroup(panelRound2Layout.createSequentialGroup()
                             .addGap(107, 107, 107)
                             .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +252,7 @@ private Profesor pr1;
                 .addComponent(txtTelefonoProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateFechaIngresos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblFechaNacimientoProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblEspecialidad)
@@ -298,105 +296,77 @@ private Profesor pr1;
     }//GEN-LAST:event_cboCarreraActionPerformed
 
     private void btnAgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProfesorActionPerformed
-  try {
-        // Capturar valores de los campos
-        String nombre = txtaNombreProfesor.getText().trim();
-        String apellido = txtaApellidoProfesor.getText().trim();
-        String email = txtEmailProfesor.getText().trim();
-        String telefono = txtTelefonoProfesor.getText().trim();
-        String especialidad = (String) cboCarrera.getSelectedItem();
-        String estado = (String) cboEstado1.getSelectedItem();
+ try {
+            String nombre = txtaNombreProfesor.getText().trim();
+            String apellido = txtaApellidoProfesor.getText().trim();
+            String email = txtEmailProfesor.getText().trim();
+            String telefono = txtTelefonoProfesor.getText().trim();
+            String especialidad = (String) cboCarrera.getSelectedItem();
+            String estado = (String) cboEstado1.getSelectedItem();
 
-        // Validar campos obligatorios
-        if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos obligatorios.");
-            return;
-        }
+            if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty()
+                    || telefono.isEmpty() || jDateFechaIngresos.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Por favor complete todos los campos obligatorios.");
+                return;
+            }
 
-        // Validar formato de email
-        if (!email.contains("@") || !email.contains(".")) {
-            JOptionPane.showMessageDialog(this, "Por favor ingrese un email válido.");
-            return;
-        }
+            if (!email.contains("@") || !email.contains(".")) {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un email válido.");
+                return;
+            }
 
-        // Validar formato de teléfono
-        if (!telefono.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "El teléfono debe contener solo números.");
-            return;
-        }
+            if (!telefono.matches("\\d{8,}")) {
+                JOptionPane.showMessageDialog(this, "El teléfono debe tener al menos 8 dígitos numéricos.");
+                return;
+            }
 
-        if (telefono.length() < 8) {
-            JOptionPane.showMessageDialog(this, "El teléfono debe tener al menos 8 dígitos.");
-            return;
-        }
+            Maestromodel maestro = new Maestromodel();
+            maestro.setNombre(nombre);
+            maestro.setApellido(apellido);
+            maestro.setEmail(email);
+            maestro.setTelefono(telefono);
+            maestro.setEspecialidad(especialidad);
+            maestro.setEstado(estado);
 
-        // Crear objeto Maestro
-        Maestromodel maestro = new Maestromodel();
-        maestro.setNombre(nombre);
-        maestro.setApellido(apellido);
-        maestro.setEmail(email);
-        maestro.setTelefono(telefono);
-        maestro.setEspecialidad(especialidad);
-        maestro.setEstado(estado);
+            java.util.Date fechaIngreso = jDateFechaIngresos.getDate();
+            LocalDate localDateIngreso = fechaIngreso.toInstant()
+                    .atZone(java.time.ZoneId.systemDefault())
+                    .toLocalDate();
+            maestro.setFecha_ingreso(localDateIngreso);
 
-        // CORRECCIÓN: Solo un bloque if para la fecha
-        if (jDateFechaNacimiento.getDate() != null) {
-            java.util.Date fechaSeleccionada = jDateFechaNacimiento.getDate();
-            // Convertir a LocalDate
-            LocalDate localDate = fechaSeleccionada.toInstant()
-                                                 .atZone(java.time.ZoneId.systemDefault())
-                                                 .toLocalDate();
-            maestro.setFecha_nacimiento(localDate);
-        }
+            System.out.println("Fecha Ingreso seleccionada: " + maestro.getFecha_ingreso());
 
-        // Debug: mostrar lo que se va a enviar
-        System.out.println("Datos del maestro:");
-        System.out.println("Nombre: " + maestro.getNombre());
-        System.out.println("Apellido: " + maestro.getApellido());
-        System.out.println("Email: " + maestro.getEmail());
-        System.out.println("Fecha Nacimiento: " + maestro.getFecha_nacimiento());
+            MaestroService service = new MaestroService();
 
-        // Guardar en la base de datos
-        MaestroService service = new MaestroService();
-        
-        // Debug adicional: ver el JSON que se enviará
-        try {
             ObjectMapper debugMapper = new ObjectMapper();
             debugMapper.registerModule(new JavaTimeModule());
             String json = debugMapper.writeValueAsString(maestro);
             System.out.println("JSON a enviar: " + json);
-        } catch (Exception e) {
-            System.out.println("Error al convertir a JSON: " + e.getMessage());
+
+            service.createMaestro(maestro);
+
+            JOptionPane.showMessageDialog(this, "Profesor agregado correctamente.");
+
+            if (pr1 != null) {
+                pr1.loadProfesores();
+            }
+
+            txtaNombreProfesor.setText("");
+            txtaApellidoProfesor.setText("");
+            txtEmailProfesor.setText("");
+            txtTelefonoProfesor.setText("");
+            jDateFechaIngresos.setDate(null);
+            cboCarrera.setSelectedIndex(0);
+            cboEstado1.setSelectedIndex(0);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al agregar profesor: " + ex.getMessage());
+            ex.printStackTrace();
         }
-        
-        Maestromodel resultado = service.createMaestro(maestro);
 
-        // Mensaje de éxito
-        JOptionPane.showMessageDialog(this, "Profesor agregado correctamente.");
-
-        // Actualizar tabla en panel Profesor
-        if (pr1 != null) {
-            pr1.loadProfesores();
-        }
-
-        // Limpiar campos
-        txtaNombreProfesor.setText("");
-        txtaApellidoProfesor.setText("");
-        txtEmailProfesor.setText("");
-        txtTelefonoProfesor.setText("");
-        jDateFechaNacimiento.setDate(null);
-        cboCarrera.setSelectedIndex(0);
-        cboEstado1.setSelectedIndex(0);
-
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, 
-            "Error al agregar profesor: " + ex.getMessage() + 
-            "\nDetalle completo: " + ex.toString());
-        ex.printStackTrace();
-    }
-  pr1 = new Profesor();
-    pr1.setVisible(true);
-    this.setVisible(false);
+        pr1 = new Profesor();
+        pr1.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAgregarProfesorActionPerformed
     public void setP1(Profesor p1){
     this.pr1 = p1;
@@ -455,7 +425,7 @@ pr1 = new Profesor();
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboCarrera;
     private javax.swing.JComboBox<String> cboEstado1;
-    private com.toedter.calendar.JDateChooser jDateFechaNacimiento;
+    private com.toedter.calendar.JDateChooser jDateFechaIngresos;
     private javax.swing.JLabel lblApellidoProfesor;
     private javax.swing.JLabel lblEmailProfesor;
     private javax.swing.JLabel lblEspecialidad;

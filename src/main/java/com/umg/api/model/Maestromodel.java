@@ -22,16 +22,17 @@ public class Maestromodel {
     }
 
     // Constructor con parámetros
-    public Maestromodel(String nombre, String apellido, String email, String especialidad, 
-                       String telefono, String estado, LocalDate fecha_nacimiento) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.especialidad = especialidad;
-        this.telefono = telefono;
-        this.estado = estado;
-        this.fecha_nacimiento = fecha_nacimiento;
-    }
+   public Maestromodel(String nombre, String apellido, String email, String especialidad, 
+                   String telefono, String estado, LocalDate fecha_nacimiento, LocalDate fecha_ingreso) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+    this.especialidad = especialidad;
+    this.telefono = telefono;
+    this.estado = estado;
+    this.fecha_nacimiento = fecha_nacimiento;
+    this.fecha_ingreso = fecha_ingreso;
+}
 
     // Getters y Setters
     public Integer getId_catedratico() {

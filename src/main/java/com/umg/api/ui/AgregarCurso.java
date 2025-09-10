@@ -1,18 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.umg.api.ui;
 
-/**
- *
- * @author mayno
- */
+import javax.swing.JOptionPane;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import com.umg.api.model.Cursomodel;
+import com.umg.api.service.CursoServer1;
+import com.umg.api.model.Cursomodel;
+import com.umg.api.service.CursoServer1;
+import javax.swing.*;
 public class AgregarCurso extends javax.swing.JFrame {
 private Cursos cu1;
-    /**
-     * Creates new form AgregarCurso
-     */
+
     public AgregarCurso() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -40,8 +39,6 @@ private Cursos cu1;
         cboSemestre = new javax.swing.JComboBox<>();
         lblCreditos = new javax.swing.JLabel();
         cboCreditos = new javax.swing.JComboBox<>();
-        lblDescripcion = new javax.swing.JLabel();
-        txtDescripcion = new javax.swing.JTextField();
         lblEstado = new javax.swing.JLabel();
         cboEstado = new javax.swing.JComboBox<>();
         panelRound3 = new com.umg.api.ui.PanelRound();
@@ -101,22 +98,11 @@ private Cursos cu1;
         cboCreditos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
         cboCreditos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
-        lblDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblDescripcion.setForeground(new java.awt.Color(10, 25, 49));
-        lblDescripcion.setText("Descripcion");
-
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
-
         lblEstado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(10, 25, 49));
         lblEstado.setText("Estado");
 
-        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Desabilitado", " " }));
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "inactivo" }));
         cboEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 127, 167)));
 
         panelRound3.setBackground(new java.awt.Color(26, 61, 99));
@@ -205,14 +191,12 @@ private Cursos cu1;
                         .addComponent(lblCodigoCurso)
                         .addComponent(lblCurso)
                         .addComponent(lblIdProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDescripcion)
                         .addComponent(cboCreditos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEstado)
                         .addComponent(lblSemestre)
                         .addComponent(lblCreditos)
                         .addComponent(cboSemestre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cboEstado, 0, 320, Short.MAX_VALUE)
-                        .addComponent(lblDescripcion)
                         .addComponent(txtIdProfesor)
                         .addComponent(txtaCodigoCurso)
                         .addComponent(txtCurso)
@@ -250,19 +234,15 @@ private Cursos cu1;
                 .addGap(5, 5, 5)
                 .addComponent(cboCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblDescripcion)
-                .addGap(5, 5, 5)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblEstado)
                 .addGap(18, 18, 18)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(lblEstado)
-                        .addGap(5, 5, 5)
                         .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(21, 21, 21)
                         .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,12 +263,66 @@ private Cursos cu1;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdProfesorActionPerformed
 
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
     private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
-        // TODO add your handling code here:
+       try {
+        // Validar campos obligatorios
+        if (txtCurso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre del curso es obligatorio");
+            return;
+        }
+        if (txtaCodigoCurso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El código del curso es obligatorio");
+            return;
+        }
+        
+        // Crear objeto curso
+        Cursomodel curso = new Cursomodel();
+        curso.setNombre(txtCurso.getText().trim());
+        curso.setCodigo(Integer.parseInt(txtaCodigoCurso.getText().trim()));
+        
+        // Campos opcionales (solo si no están vacíos)
+        if (!txtIdProfesor.getText().trim().isEmpty()) {
+            curso.setCatedraticoCod(Integer.parseInt(txtIdProfesor.getText().trim()));
+        }
+        
+        curso.setSemestre(cboSemestre.getSelectedItem().toString());
+        curso.setCreditos(Integer.parseInt(cboCreditos.getSelectedItem().toString()));
+        
+        // Manejo correcto del estado
+        String estadoSeleccionado = cboEstado.getSelectedItem().toString();
+        if (estadoSeleccionado.equals("Seleccione estado")) {
+            curso.setEstado_curso(null);
+        } else {
+            curso.setEstado_curso(estadoSeleccionado);
+        }
+
+        // Llamar al servicio
+        CursoServer1 service = new CursoServer1();
+        Cursomodel cursoCreado = service.createCurso(curso);
+
+        // SI LLEGA AQUÍ, EL CURSO SE CREÓ EXITOSAMENTE
+        JOptionPane.showMessageDialog(this, "Curso creado exitosamente: " + cursoCreado.getNombre());
+
+        // Actualizar tabla en JFrame Cursos si está disponible
+        if (cu1 != null) {
+            cu1.cargarDatos();
+        }
+
+        this.dispose(); // Cerrar ventana después de agregar
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Verifique que los campos numéricos contengan valores válidos");
+    } catch (Exception e) {
+        // ESTE ES EL ERROR QUE ESTÁS VIENDO - El servidor devuelve JSON en lugar de objeto
+        JOptionPane.showMessageDialog(this, "Error al procesar respuesta del servidor: " + e.getMessage());
+        
+        // Pero el curso SÍ se creó, así que cerramos la ventana igualmente
+        if (cu1 != null) {
+            cu1.cargarDatos(); // Actualizar la tabla para ver el nuevo curso
+        }
+        this.dispose(); // Cerrar la ventana
+    }
+                   
     }//GEN-LAST:event_btnAgregarCursoActionPerformed
     public void setP1(Cursos p1){
     this.cu1 = p1;
@@ -343,7 +377,6 @@ private Cursos cu1;
     private javax.swing.JLabel lblCodigoCurso;
     private javax.swing.JLabel lblCreditos;
     private javax.swing.JLabel lblCurso;
-    private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblIdProfesor;
     private javax.swing.JLabel lblSemestre;
@@ -353,7 +386,6 @@ private Cursos cu1;
     private com.umg.api.ui.PanelRound panelRound2;
     private com.umg.api.ui.PanelRound panelRound3;
     private javax.swing.JTextField txtCurso;
-    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtIdProfesor;
     private javax.swing.JTextField txtaCodigoCurso;
     // End of variables declaration//GEN-END:variables

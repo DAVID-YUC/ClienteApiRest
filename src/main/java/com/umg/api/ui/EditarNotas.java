@@ -4,6 +4,8 @@
  */
 package com.umg.api.ui;
 
+import com.umg.api.Notas;
+
 /**
  *
  * @author mayno

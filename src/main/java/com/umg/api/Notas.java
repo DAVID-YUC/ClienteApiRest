@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.umg.api.ui;
+package com.umg.api;
+
+import com.umg.api.ui.AgregarNotas;
+import com.umg.api.ui.EditarNotas;
+import com.umg.api.ui.EliminarNotas;
 
 /**
  *
@@ -239,17 +243,17 @@ public class Notas extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarProfesorActionPerformed
 
     private void btnEliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfesorActionPerformed
-     EliminarNotas x1 = new EliminarNotas();
+        EliminarNotas x1 = new EliminarNotas();
      x1.setVisible(true);
     }//GEN-LAST:event_btnEliminarProfesorActionPerformed
 
     private void btnEditarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProfesorActionPerformed
-     EditarNotas y1 = new EditarNotas();
+        EditarNotas y1 = new EditarNotas();
      y1.setVisible(true);
     }//GEN-LAST:event_btnEditarProfesorActionPerformed
 
     private void btnAgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProfesorActionPerformed
-     AgregarNotas nt1 = new AgregarNotas();
+        AgregarNotas nt1 = new AgregarNotas();
      nt1.setVisible(true);
     }//GEN-LAST:event_btnAgregarProfesorActionPerformed
 
